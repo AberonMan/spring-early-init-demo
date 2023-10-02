@@ -12,8 +12,8 @@ public class BulbazavrPostProcessor implements BeanFactoryPostProcessor, Applica
     
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        applicationContext.getBeansOfType(Bulbazavr.class)
-            .forEach((s, bulbazavr) -> System.out.println(bulbazavr.bulbazavrImage()));
+        applicationContext.getBeanNamesForType(Bulbazavr.class);
+        
     }
     
     @Override

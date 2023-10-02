@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-public class BulbazavrFactoryBean extends AbstractFactoryBean<Bulbazavr> {
+public class BulbazavrFactoryBean<T> extends AbstractFactoryBean<T> {
     
     private final BulbazavrConfigurationProperties testConfigurationProperties;
     
@@ -20,13 +20,13 @@ public class BulbazavrFactoryBean extends AbstractFactoryBean<Bulbazavr> {
     }
     
     @Override
-    protected Bulbazavr createInstance() throws Exception {
+    protected T  createInstance() throws Exception {
         final String pathToFile = testConfigurationProperties.pathToFile();
         Objects.requireNonNull(pathToFile, "Path to file with bulbazavr can't be null!");
         final String bulbazavrImage =
             Files.readString(Paths.get(Thread.currentThread().getContextClassLoader().getResource(pathToFile).toURI()));
         System.out.println(bulbazavrImage);
-        return new Bulbazavr(bulbazavrImage);
+        return (T) new Bulbazavr(bulbazavrImage);
     }
     
 }
