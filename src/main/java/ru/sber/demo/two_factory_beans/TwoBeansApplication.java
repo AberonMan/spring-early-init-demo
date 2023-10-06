@@ -15,7 +15,6 @@ import ru.sber.demo.pockemons.Pickachu;
 @EnableConfigurationProperties(PockemonConfigurationProperties.class)
 public class TwoBeansApplication {
     
-    
     public static void main(String[] args) {
         SpringApplication.run(TwoBeansApplication.class, args);
     }
@@ -26,17 +25,17 @@ public class TwoBeansApplication {
     }
     
     @Bean
-    PickachuFactoryRegisterBeanPostProcessor pickachuFactoryRegisterBeanPostProcessor() {
-        return new PickachuFactoryRegisterBeanPostProcessor();
-    }
-    
-    @Bean
     public PockemoMaster pockemoMaster(Pickachu pickachu) {
         return new PockemoMaster(pickachu);
     }
     
     @Bean
-    BulbazavrBeanFactoryPostProcessor bulbazavrPostProcessor() {
+    static BulbazavrBeanFactoryPostProcessor bulbazavrPostProcessor() {
         return new BulbazavrBeanFactoryPostProcessor();
+    }
+    
+    @Bean
+    static PickachuFactoryRegisterBeanPostProcessor pickachuFactoryRegisterBeanPostProcessor() {
+        return new PickachuFactoryRegisterBeanPostProcessor();
     }
 }
