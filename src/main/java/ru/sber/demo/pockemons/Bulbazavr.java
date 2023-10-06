@@ -1,6 +1,6 @@
-package ru.sber.demo;
+package ru.sber.demo.pockemons;
 
-public class Bulbazavr {
+public class Bulbazavr implements Pockemon {
     
     private final String bulbazavrImage;
     
@@ -8,7 +8,8 @@ public class Bulbazavr {
         this.bulbazavrImage = bulbazavrImage;
     }
     
-    public String bulbazavrImage() {
+    @Override
+    public String pockemonImage() {
         return bulbazavrImage;
     }
 }

@@ -1,2 +1,3 @@
 demo:
-  pathToFile: "test.txt"
+  pathToBulbazvr: bulbazrv.txt
+  pathToPickachu: pickachu.txt

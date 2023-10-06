@@ -1,16 +1,19 @@
-package ru.sber.demo;
+package ru.sber.demo.factory_bean_with_interface;
 
 import org.springframework.beans.factory.config.AbstractFactoryBean;
+import ru.sber.demo.pockemons.Bulbazavr;
+import ru.sber.demo.PockemonConfigurationProperties;
+import ru.sber.demo.pockemons.Pockemon;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Objects;
 
-public class BulbazavrFactoryBean<T> extends AbstractFactoryBean<T> {
+public class BulbazarvFactoryBeanWithParentInterface extends AbstractFactoryBean<Pockemon> {
     
-    private final BulbazavrConfigurationProperties testConfigurationProperties;
+    private final PockemonConfigurationProperties testConfigurationProperties;
     
-    public BulbazavrFactoryBean(BulbazavrConfigurationProperties testConfigurationProperties) {
+    public BulbazarvFactoryBeanWithParentInterface(PockemonConfigurationProperties testConfigurationProperties) {
         this.testConfigurationProperties = testConfigurationProperties;
     }
     
@@ -20,13 +23,12 @@ public class BulbazavrFactoryBean<T> extends AbstractFactoryBean<T> {
     }
     
     @Override
-    protected T  createInstance() throws Exception {
-        final String pathToFile = testConfigurationProperties.pathToFile();
+    protected Bulbazavr createInstance() throws Exception {
+        final String pathToFile = testConfigurationProperties.pathToBulbazvr();
         Objects.requireNonNull(pathToFile, "Path to file with bulbazavr can't be null!");
         final String bulbazavrImage =
             Files.readString(Paths.get(Thread.currentThread().getContextClassLoader().getResource(pathToFile).toURI()));
         System.out.println(bulbazavrImage);
-        return (T) new Bulbazavr(bulbazavrImage);
+        return new Bulbazavr(bulbazavrImage);
     }
-    
 }
