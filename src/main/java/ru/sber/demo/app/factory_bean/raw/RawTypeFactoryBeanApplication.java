@@ -1,33 +1,32 @@
-package ru.sber.demo.bean_with_row_type;
+package ru.sber.demo.app.factory_bean.raw;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import ru.sber.demo.BulbazavrBeanFactoryPostProcessor;
 import ru.sber.demo.PockemonConfigurationProperties;
-import ru.sber.demo.factory_bean_with_interface.BulbazarvFactoryBeanWithParentInterface;
+import ru.sber.demo.dsl.keeper.WithZookeeper;
+import ru.sber.demo.dsl.pockemon.PockemonFactoryBean;
+import ru.sber.demo.model.PockemonType;
 
 @SpringBootApplication
 @EnableConfigurationProperties(PockemonConfigurationProperties.class)
+@WithZookeeper
 public class RawTypeFactoryBeanApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(RawTypeFactoryBeanApplication.class, args);
 	}
 	
-	/*
-	   Factory bean заданный таким образом не приводит к ранней инициализации бина bpfpp.
-	 */
+	
 	@Bean
-	FactoryBean bulbazavrFactoryBean(PockemonConfigurationProperties bulbazavrConfigurationProperties) {
-		return new BulbazarvFactoryBeanWithParentInterface(bulbazavrConfigurationProperties);
+	public FactoryBean zhenya(PockemonConfigurationProperties properties) {
+		return new PockemonFactoryBean(properties).withType(PockemonType.BULBAZAVR);
 	}
 	
 	@Bean
-	BulbazavrBeanFactoryPostProcessor bulbazavrPostProcessor() {
-		return new BulbazavrBeanFactoryPostProcessor();
+	public FactoryBean maxim(PockemonConfigurationProperties properties) {
+		return new PockemonFactoryBean(properties).withType(PockemonType.PICKACHU);
 	}
-	
 }
