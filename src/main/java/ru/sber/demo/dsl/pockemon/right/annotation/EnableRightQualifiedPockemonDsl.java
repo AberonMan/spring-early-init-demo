@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon.wrong.pure;
+package ru.sber.demo.dsl.pockemon.right.annotation;
 
 import org.springframework.context.annotation.Import;
 
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(PureWrongPockemonDslConfiguration.class)
-public @interface EnablePureWrongPockemonDsl {
+@Import(RightQualifiedPockemonDslConfiguration.class)
+public @interface EnableRightQualifiedPockemonDsl {
 }

@@ -18,4 +18,9 @@ public abstract class AbstractPockemon implements Pockemon {
     public boolean isShiny() {
         return shiny;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }
