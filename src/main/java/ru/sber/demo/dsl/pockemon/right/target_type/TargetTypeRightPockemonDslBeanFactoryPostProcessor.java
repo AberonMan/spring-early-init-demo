@@ -1,17 +1,17 @@
-package ru.sber.demo.dsl.pockemon.right;
+package ru.sber.demo.dsl.pockemon.right.target_type;
 
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.core.ResolvableType;
 import ru.sber.demo.dsl.pockemon.AbstractPockemonDslBeanFactoryPostProcessor;
 import ru.sber.demo.dsl.pockemon.PockemonFactoryBean;
 import ru.sber.demo.dsl.pockemon.PockemonMasterFactoryBean;
 import ru.sber.demo.model.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 
-public class RightPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDslBeanFactoryPostProcessor {
+public class TargetTypeRightPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDslBeanFactoryPostProcessor {
     
     @Override
     protected void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
@@ -21,7 +21,8 @@ public class RightPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDs
             .addConstructorArgReference(pockemonName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PockemonMaster.class);
+        
+        master.setTargetType(ResolvableType.forClass(PockemonMaster.class));
         beanFactory.registerBeanDefinition(masterName, master);
     }
     
@@ -32,7 +33,7 @@ public class RightPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDs
             .addConstructorArgReference(dslBeanName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        pockemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pockemon.class);
+        pockemon.setTargetType(ResolvableType.forClass(Pockemon.class));
         beanFactory.registerBeanDefinition(pockemonName, pockemon);
     }
 }

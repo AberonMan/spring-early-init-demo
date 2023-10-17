@@ -9,7 +9,7 @@ import ru.sber.demo.app.dsl.right.annotation.DefaultPockemon;
 import ru.sber.demo.app.dsl.right.annotation.DefaultPockemonPrinter;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
 import ru.sber.demo.dsl.pockemon.PockemonDsl;
-import ru.sber.demo.dsl.pockemon.right.EnableRightPockemonDsl;
+import ru.sber.demo.dsl.pockemon.right.attribute.EnableRightAttributePockemonDsl;
 import ru.sber.demo.model.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 import ru.sber.demo.model.PockemonType;
@@ -18,7 +18,7 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableConfigurationProperties(PockemonConfigurationProperties.class)
-@EnableRightPockemonDsl
+@EnableRightAttributePockemonDsl
 @WithZookeeper
 public class DslWrongPokemonApplication {
     

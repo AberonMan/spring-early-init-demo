@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon.wrong.target_type;
+package ru.sber.demo.dsl.pockemon.right.target_type;
 
 import org.springframework.context.annotation.Import;
 
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(TargetTypeWrongPockemonDslConfiguration.class)
-public @interface EnableTargetTypeWrongPockemonDsl {
+@Import(TargetTypeRightPockemonDslConfiguration.class)
+public @interface EnableTargetTypeRighPockemonDsl {
 }

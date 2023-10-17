@@ -1,4 +1,4 @@
-package ru.sber.demo.app.dsl.right;
+package ru.sber.demo.app.dsl.right.target_type;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import ru.sber.demo.PockemonConfigurationProperties;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
 import ru.sber.demo.dsl.pockemon.PockemonDsl;
-import ru.sber.demo.dsl.pockemon.right.EnableRightPockemonDsl;
+import ru.sber.demo.dsl.pockemon.right.target_type.EnableTargetTypeRighPockemonDsl;
 import ru.sber.demo.model.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 import ru.sber.demo.model.PockemonType;
@@ -16,12 +16,12 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableConfigurationProperties(PockemonConfigurationProperties.class)
-@EnableRightPockemonDsl
+@EnableTargetTypeRighPockemonDsl
 @WithZookeeper
-public class DslRightPokemonApplication {
+public class DslRightTargetTypePokemonApplication {
     
     public static void main(String[] args) {
-        SpringApplication.run(DslRightPokemonApplication.class, args);
+        SpringApplication.run(DslRightTargetTypePokemonApplication.class, args);
     }
     
     @Bean
