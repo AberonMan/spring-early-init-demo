@@ -2,7 +2,7 @@ package ru.sber.demo.app.dsl.right.annotation;
 
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import ru.sber.demo.model.Pockemon;
+import ru.sber.demo.model.api.Pockemon;
 
 import java.util.List;
 

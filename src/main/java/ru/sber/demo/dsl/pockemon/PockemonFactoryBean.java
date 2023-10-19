@@ -4,7 +4,7 @@ import org.springframework.beans.factory.FactoryBean;
 import ru.sber.demo.PockemonConfigurationProperties;
 import ru.sber.demo.model.Bulbazavr;
 import ru.sber.demo.model.Pickachu;
-import ru.sber.demo.model.Pockemon;
+import ru.sber.demo.model.api.Pockemon;
 import ru.sber.demo.model.PockemonType;
 
 import java.io.IOException;

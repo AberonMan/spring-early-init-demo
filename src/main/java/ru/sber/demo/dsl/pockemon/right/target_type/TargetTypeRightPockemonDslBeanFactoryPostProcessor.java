@@ -8,7 +8,7 @@ import org.springframework.core.ResolvableType;
 import ru.sber.demo.dsl.pockemon.AbstractPockemonDslBeanFactoryPostProcessor;
 import ru.sber.demo.dsl.pockemon.PockemonFactoryBean;
 import ru.sber.demo.dsl.pockemon.PockemonMasterFactoryBean;
-import ru.sber.demo.model.Pockemon;
+import ru.sber.demo.model.api.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 
 public class TargetTypeRightPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDslBeanFactoryPostProcessor {

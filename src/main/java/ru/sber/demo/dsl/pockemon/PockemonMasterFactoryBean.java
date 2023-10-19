@@ -1,7 +1,7 @@
 package ru.sber.demo.dsl.pockemon;
 
 import org.springframework.beans.factory.FactoryBean;
-import ru.sber.demo.model.Pockemon;
+import ru.sber.demo.model.api.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 
 public class PockemonMasterFactoryBean implements FactoryBean<PockemonMaster> {

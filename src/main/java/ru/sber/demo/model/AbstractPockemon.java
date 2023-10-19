@@ -1,5 +1,7 @@
 package ru.sber.demo.model;
 
+import ru.sber.demo.model.api.Pockemon;
+
 public abstract class AbstractPockemon implements Pockemon {
     private final String pockemonImage;
     private final boolean shiny;

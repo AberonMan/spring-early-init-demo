@@ -8,7 +8,7 @@ import ru.sber.demo.PockemonConfigurationProperties;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
 import ru.sber.demo.dsl.pockemon.PockemonDsl;
 import ru.sber.demo.dsl.pockemon.right.attribute.EnableRightAttributePockemonDsl;
-import ru.sber.demo.model.Pockemon;
+import ru.sber.demo.model.api.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 import ru.sber.demo.model.PockemonType;
 

@@ -1,5 +1,7 @@
 package ru.sber.demo.model;
 
+import ru.sber.demo.model.api.Pockemon;
+
 public class PockemonMaster {
     private final String name;
     private final Pockemon pockemon;
