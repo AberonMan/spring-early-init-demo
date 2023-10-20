@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon;
+package ru.sber.demo.dsl.pokemon;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -26,7 +26,7 @@ public abstract class AbstractPokemonDslBeanFactoryPostProcessor implements Bean
     protected abstract void registerPokemon(BeanDefinitionRegistry beanFactory, String dslBeanName, String pokemonName);
     
     protected abstract void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
-                                           String pockemonName);
+                                           String pokemonName);
     
     @Override
     public int getOrder() {

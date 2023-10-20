@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon.extended.annotation;
+package ru.sber.demo.dsl.pokemon.extended.target_type;
 
 import org.springframework.context.annotation.Import;
 
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(CopyQualifiedPokemonDslConfiguration.class)
-public @interface EnableCopyQualifiedPokemonDsl {
+@Import(TargetTypePokemonDslConfiguration.class)
+public @interface EnableTargetTypePokemonDsl {
 }

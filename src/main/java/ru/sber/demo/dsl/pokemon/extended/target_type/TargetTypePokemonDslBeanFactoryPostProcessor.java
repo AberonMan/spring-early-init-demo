@@ -1,28 +1,29 @@
-package ru.sber.demo.dsl.pockemon.extended.attribute;
+package ru.sber.demo.dsl.pokemon.extended.target_type;
 
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import ru.sber.demo.dsl.pockemon.AbstractPokemonDslBeanFactoryPostProcessor;
-import ru.sber.demo.dsl.pockemon.PokemonFactoryBean;
-import ru.sber.demo.dsl.pockemon.PokemonMasterFactoryBean;
+import org.springframework.core.ResolvableType;
+import ru.sber.demo.dsl.pokemon.AbstractPokemonDslBeanFactoryPostProcessor;
+import ru.sber.demo.dsl.pokemon.PokemonFactoryBean;
+import ru.sber.demo.dsl.pokemon.PokemonMasterFactoryBean;
 import ru.sber.demo.model.api.Pokemon;
 import ru.sber.demo.model.PokemonMaster;
 
-public class AttributePokemonDslBeanFactoryPostProcessor extends AbstractPokemonDslBeanFactoryPostProcessor {
+public class TargetTypePokemonDslBeanFactoryPostProcessor extends AbstractPokemonDslBeanFactoryPostProcessor {
     
     @Override
     protected void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
-                                  String pockemonName) {
+                                  String pokemonName) {
         RootBeanDefinition master = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(
                 PokemonMasterFactoryBean.class)
             .addConstructorArgReference(dslBeanName)
-            .addConstructorArgReference(pockemonName)
+            .addConstructorArgReference(pokemonName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PokemonMaster.class);
+        
+        master.setTargetType(ResolvableType.forClass(PokemonMaster.class));
         beanFactory.registerBeanDefinition(masterName, master);
     }
     
@@ -33,7 +34,7 @@ public class AttributePokemonDslBeanFactoryPostProcessor extends AbstractPokemon
             .addConstructorArgReference(dslBeanName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        pokemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pokemon.class);
+        pokemon.setTargetType(ResolvableType.forClass(Pokemon.class));
         beanFactory.registerBeanDefinition(pokemonName, pokemon);
     }
 }

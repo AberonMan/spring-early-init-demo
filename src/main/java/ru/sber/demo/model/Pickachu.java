@@ -1,12 +1,12 @@
 package ru.sber.demo.model;
 
 public class Pickachu extends AbstractPokemon {
-    public Pickachu(String pockemonImage, boolean shiny) {
-        super(pockemonImage, shiny);
+    public Pickachu(String pokemonImage, boolean shiny) {
+        super(pokemonImage, shiny);
     }
     
     @Override
-    public PokemonType pockemonType() {
+    public PokemonType pokemonType() {
         return PokemonType.PICKACHU;
     }
 }

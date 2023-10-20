@@ -8,19 +8,19 @@ import java.util.List;
 
 public class DefaultPokemonPrinter {
 
-    private final List<Pokemon> pockemons;
+    private final List<Pokemon> pokemons;
 
     public DefaultPokemonPrinter(List<Pokemon> pokemons) {
-        this.pockemons = pokemons;
+        this.pokemons = pokemons;
     }
 
     @EventListener(ContextRefreshedEvent.class)
     public void print() {
-        if (pockemons.isEmpty()) {
+        if (pokemons.isEmpty()) {
             System.out.println("В наборе по умолчанию нет покемонов!");
         } else {
             System.out.println("Набор по умолчанию: ");
-            pockemons.forEach(pockemon -> System.out.println(" - " + pockemon));
+            pokemons.forEach(pokemon -> System.out.println(" - " + pokemon));
         }
     }
 }

@@ -7,7 +7,7 @@ public class Bulbazavr extends AbstractPokemon {
     }
     
     @Override
-    public PokemonType pockemonType() {
+    public PokemonType pokemonType() {
         return PokemonType.BULBAZAVR;
     }
 }

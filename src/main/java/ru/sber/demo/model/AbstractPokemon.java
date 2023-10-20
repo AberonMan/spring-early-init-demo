@@ -3,17 +3,17 @@ package ru.sber.demo.model;
 import ru.sber.demo.model.api.Pokemon;
 
 public abstract class AbstractPokemon implements Pokemon {
-    private final String pockemonImage;
+    private final String pokemonImage;
     private final boolean shiny;
     
-    protected AbstractPokemon(String pockemonImage, boolean shiny) {
-        this.pockemonImage = pockemonImage;
+    protected AbstractPokemon(String pokemonImage, boolean shiny) {
+        this.pokemonImage = pokemonImage;
         this.shiny = shiny;
     }
     
     @Override
-    public String pockemonImage() {
-        return pockemonImage;
+    public String pokemonImage() {
+        return pokemonImage;
     }
     
     @Override

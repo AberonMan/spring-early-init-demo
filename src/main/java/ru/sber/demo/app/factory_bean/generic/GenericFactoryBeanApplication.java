@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import ru.sber.demo.PokemonConfigurationProperties;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
-import ru.sber.demo.dsl.pockemon.PokemonFactoryBean;
+import ru.sber.demo.dsl.pokemon.PokemonFactoryBean;
 import ru.sber.demo.model.PokemonType;
 
 @SpringBootApplication

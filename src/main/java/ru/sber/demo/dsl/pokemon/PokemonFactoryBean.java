@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon;
+package ru.sber.demo.dsl.pokemon;
 
 import org.springframework.beans.factory.FactoryBean;
 import ru.sber.demo.PokemonConfigurationProperties;

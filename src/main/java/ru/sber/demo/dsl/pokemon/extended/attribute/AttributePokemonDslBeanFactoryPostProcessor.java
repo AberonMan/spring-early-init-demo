@@ -1,30 +1,25 @@
-package ru.sber.demo.dsl.pockemon.extended.annotation;
+package ru.sber.demo.dsl.pokemon.extended.attribute;
 
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.BeanDefinitionHolder;
-import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import ru.sber.demo.dsl.pockemon.AbstractPokemonDslBeanFactoryPostProcessor;
-import ru.sber.demo.dsl.pockemon.PokemonFactoryBean;
-import ru.sber.demo.dsl.pockemon.PokemonMasterFactoryBean;
+import ru.sber.demo.dsl.pokemon.AbstractPokemonDslBeanFactoryPostProcessor;
+import ru.sber.demo.dsl.pokemon.PokemonFactoryBean;
+import ru.sber.demo.dsl.pokemon.PokemonMasterFactoryBean;
 import ru.sber.demo.model.api.Pokemon;
 import ru.sber.demo.model.PokemonMaster;
 
-// See also ScopedProxyUtils
-// See also QualifierAnnotationAutowireCandidateResolver
-public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPokemonDslBeanFactoryPostProcessor {
+public class AttributePokemonDslBeanFactoryPostProcessor extends AbstractPokemonDslBeanFactoryPostProcessor {
     
     @Override
     protected void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
-                                  String pockemonName) {
-
+                                  String pokemonName) {
         RootBeanDefinition master = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(
                 PokemonMasterFactoryBean.class)
             .addConstructorArgReference(dslBeanName)
-            .addConstructorArgReference(pockemonName)
+            .addConstructorArgReference(pokemonName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
         master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PokemonMaster.class);
@@ -39,24 +34,6 @@ public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPok
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
         pokemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pokemon.class);
-
-        copyQualifierMetadata(beanFactory, dslBeanName, pokemon);
-
         beanFactory.registerBeanDefinition(pokemonName, pokemon);
-    }
-
-    private void copyQualifierMetadata(
-        BeanDefinitionRegistry beanFactory, String dslBeanName, RootBeanDefinition targetBeanDefinition) {
-
-        BeanDefinition dslBeanDefinition = beanFactory.getBeanDefinition(dslBeanName);
-
-        // Copy autowire settings from original bean definition.
-        targetBeanDefinition.setAutowireCandidate(dslBeanDefinition.isAutowireCandidate());
-        targetBeanDefinition.setPrimary(dslBeanDefinition.isPrimary());
-        if (dslBeanDefinition instanceof AbstractBeanDefinition) {
-            targetBeanDefinition.copyQualifiersFrom((AbstractBeanDefinition) dslBeanDefinition);
-        }
-
-        targetBeanDefinition.setDecoratedDefinition(new BeanDefinitionHolder(dslBeanDefinition, dslBeanName));
     }
 }

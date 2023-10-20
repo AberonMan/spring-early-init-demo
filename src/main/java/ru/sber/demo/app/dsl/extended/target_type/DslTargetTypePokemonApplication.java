@@ -6,8 +6,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import ru.sber.demo.PokemonConfigurationProperties;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
-import ru.sber.demo.dsl.pockemon.PokemonDsl;
-import ru.sber.demo.dsl.pockemon.extended.target_type.EnableTargetTypePokemonDsl;
+import ru.sber.demo.dsl.pokemon.PokemonDsl;
+import ru.sber.demo.dsl.pokemon.extended.target_type.EnableTargetTypePokemonDsl;
 import ru.sber.demo.model.api.Pokemon;
 import ru.sber.demo.model.PokemonMaster;
 import ru.sber.demo.model.PokemonType;

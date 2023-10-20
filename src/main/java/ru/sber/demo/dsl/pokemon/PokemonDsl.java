@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon;
+package ru.sber.demo.dsl.pokemon;
 
 import ru.sber.demo.model.PokemonType;
 

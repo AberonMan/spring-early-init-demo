@@ -23,10 +23,10 @@ public class PokemonZookeeperBeanFactoryPostProcessor implements BeanFactoryPost
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         List<String> workerNames = Arrays.asList(beanFactory.getBeanNamesForType(ZooWorker.class));
-        List<String> pockemonNames = Arrays.asList(beanFactory.getBeanNamesForType(Pokemon.class));
+        List<String> pokemonNames = Arrays.asList(beanFactory.getBeanNamesForType(Pokemon.class));
         
         RootBeanDefinition book = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonKeeperBook.class)
-            .addConstructorArgValue(pockemonNames)
+            .addConstructorArgValue(pokemonNames)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
         ((BeanDefinitionRegistry) beanFactory).registerBeanDefinition(KEEPER_BOOK_BEAN, book);

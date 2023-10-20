@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon.extended.attribute;
+package ru.sber.demo.dsl.pokemon.simple.pure;
 
 import org.springframework.context.annotation.Import;
 
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(AttributePokemonDslConfiguration.class)
-public @interface EnableAttributePokemonDsl {
+@Import(PurePokemonDslConfiguration.class)
+public @interface EnablePurePokemonDsl {
 }

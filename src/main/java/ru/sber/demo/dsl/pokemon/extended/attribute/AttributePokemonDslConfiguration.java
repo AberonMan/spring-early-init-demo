@@ -1,4 +1,4 @@
-package ru.sber.demo.dsl.pockemon.extended.attribute;
+package ru.sber.demo.dsl.pokemon.extended.attribute;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
