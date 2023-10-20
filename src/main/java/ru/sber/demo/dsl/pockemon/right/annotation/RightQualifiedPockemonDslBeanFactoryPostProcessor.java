@@ -14,6 +14,7 @@ import ru.sber.demo.model.api.Pockemon;
 import ru.sber.demo.model.PockemonMaster;
 
 // See also ScopedProxyUtils
+// See also QualifierAnnotationAutowireCandidateResolver
 public class RightQualifiedPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDslBeanFactoryPostProcessor {
     
     @Override
@@ -55,6 +56,6 @@ public class RightQualifiedPockemonDslBeanFactoryPostProcessor extends AbstractP
             targetBeanDefinition.copyQualifiersFrom((AbstractBeanDefinition) dslBeanDefinition);
         }
 
-        // targetBeanDefinition.setDecoratedDefinition(new BeanDefinitionHolder(dslBeanDefinition, dslBeanName));
+        targetBeanDefinition.setDecoratedDefinition(new BeanDefinitionHolder(dslBeanDefinition, dslBeanName));
     }
 }
