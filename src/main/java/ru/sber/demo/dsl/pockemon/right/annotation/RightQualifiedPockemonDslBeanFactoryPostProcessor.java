@@ -55,6 +55,6 @@ public class RightQualifiedPockemonDslBeanFactoryPostProcessor extends AbstractP
             targetBeanDefinition.copyQualifiersFrom((AbstractBeanDefinition) dslBeanDefinition);
         }
 
-        targetBeanDefinition.setDecoratedDefinition(new BeanDefinitionHolder(dslBeanDefinition, dslBeanName));
+        // targetBeanDefinition.setDecoratedDefinition(new BeanDefinitionHolder(dslBeanDefinition, dslBeanName));
     }
 }
