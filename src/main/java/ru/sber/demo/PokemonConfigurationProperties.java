@@ -3,7 +3,7 @@ package ru.sber.demo;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "demo")
-public class PockemonConfigurationProperties {
+public class PokemonConfigurationProperties {
     
     private String pathToBulbazvr;
     

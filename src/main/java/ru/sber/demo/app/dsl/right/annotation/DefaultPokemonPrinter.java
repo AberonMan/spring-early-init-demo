@@ -2,15 +2,15 @@ package ru.sber.demo.app.dsl.right.annotation;
 
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
-import ru.sber.demo.model.api.Pockemon;
+import ru.sber.demo.model.api.Pokemon;
 
 import java.util.List;
 
-public class DefaultPockemonPrinter {
+public class DefaultPokemonPrinter {
 
-    private final List<Pockemon> pockemons;
+    private final List<Pokemon> pockemons;
 
-    public DefaultPockemonPrinter(List<Pockemon> pokemons) {
+    public DefaultPokemonPrinter(List<Pokemon> pokemons) {
         this.pockemons = pokemons;
     }
 

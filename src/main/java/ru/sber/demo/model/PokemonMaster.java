@@ -1,12 +1,12 @@
 package ru.sber.demo.model;
 
-import ru.sber.demo.model.api.Pockemon;
+import ru.sber.demo.model.api.Pokemon;
 
-public class PockemonMaster {
+public class PokemonMaster {
     private final String name;
-    private final Pockemon pockemon;
+    private final Pokemon pockemon;
     
-    public PockemonMaster(String name, Pockemon pockemon) {
+    public PokemonMaster(String name, Pokemon pockemon) {
         System.out.println("Я покемон-мастер " + name + "!");
         System.out.println("Я тренирую его!");
         System.out.println(pockemon.pockemonImage());

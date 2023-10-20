@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Import(TargetTypeRightPockemonDslConfiguration.class)
-public @interface EnableTargetTypeRighPockemonDsl {
+@Import(TargetTypeRightPokemonDslConfiguration.class)
+public @interface EnableTargetTypeRighPokemonDsl {
 }

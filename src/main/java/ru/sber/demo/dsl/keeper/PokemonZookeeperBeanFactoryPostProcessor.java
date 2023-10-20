@@ -8,30 +8,30 @@ import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.core.Ordered;
-import ru.sber.demo.model.api.Pockemon;
-import ru.sber.demo.model.PockemonKeeperBook;
-import ru.sber.demo.model.PockemonZookeeper;
+import ru.sber.demo.model.api.Pokemon;
+import ru.sber.demo.model.PokemonKeeperBook;
+import ru.sber.demo.model.PokemonZookeeper;
 import ru.sber.demo.model.api.ZooWorker;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class PockemonZookeeperBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
+public class PokemonZookeeperBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
     
     private static final String KEEPER_BOOK_BEAN = "keeperBook";
     
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         List<String> workerNames = Arrays.asList(beanFactory.getBeanNamesForType(ZooWorker.class));
-        List<String> pockemonNames = Arrays.asList(beanFactory.getBeanNamesForType(Pockemon.class));
+        List<String> pockemonNames = Arrays.asList(beanFactory.getBeanNamesForType(Pokemon.class));
         
-        RootBeanDefinition book = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PockemonKeeperBook.class)
+        RootBeanDefinition book = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonKeeperBook.class)
             .addConstructorArgValue(pockemonNames)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
         ((BeanDefinitionRegistry) beanFactory).registerBeanDefinition(KEEPER_BOOK_BEAN, book);
         
-        RootBeanDefinition zookeeper = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PockemonZookeeper.class)
+        RootBeanDefinition zookeeper = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonZookeeper.class)
             .addConstructorArgReference(KEEPER_BOOK_BEAN)
             .addConstructorArgValue(workerNames)
             .setScope(BeanDefinition.SCOPE_SINGLETON)

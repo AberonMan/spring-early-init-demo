@@ -7,41 +7,42 @@ import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
-import ru.sber.demo.dsl.pockemon.AbstractPockemonDslBeanFactoryPostProcessor;
-import ru.sber.demo.dsl.pockemon.PockemonFactoryBean;
-import ru.sber.demo.dsl.pockemon.PockemonMasterFactoryBean;
-import ru.sber.demo.model.api.Pockemon;
-import ru.sber.demo.model.PockemonMaster;
+import ru.sber.demo.dsl.pockemon.AbstractPokemonDslBeanFactoryPostProcessor;
+import ru.sber.demo.dsl.pockemon.PokemonFactoryBean;
+import ru.sber.demo.dsl.pockemon.PokemonMasterFactoryBean;
+import ru.sber.demo.model.api.Pokemon;
+import ru.sber.demo.model.PokemonMaster;
 
 // See also ScopedProxyUtils
 // See also QualifierAnnotationAutowireCandidateResolver
-public class RightQualifiedPockemonDslBeanFactoryPostProcessor extends AbstractPockemonDslBeanFactoryPostProcessor {
+public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPokemonDslBeanFactoryPostProcessor {
     
     @Override
     protected void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
                                   String pockemonName) {
 
-        RootBeanDefinition master = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PockemonMasterFactoryBean.class)
+        RootBeanDefinition master = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(
+                PokemonMasterFactoryBean.class)
             .addConstructorArgReference(dslBeanName)
             .addConstructorArgReference(pockemonName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PockemonMaster.class);
+        master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PokemonMaster.class);
         beanFactory.registerBeanDefinition(masterName, master);
     }
     
     @Override
-    protected void registerPockemon(BeanDefinitionRegistry beanFactory, String dslBeanName, String pockemonName) {
-        RootBeanDefinition pockemon = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PockemonFactoryBean.class)
-            .addConstructorArgReference("demo-ru.sber.demo.PockemonConfigurationProperties")
+    protected void registerPokemon(BeanDefinitionRegistry beanFactory, String dslBeanName, String pokemonName) {
+        RootBeanDefinition pokemon = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonFactoryBean.class)
+            .addConstructorArgReference("demo-ru.sber.demo.PokemonConfigurationProperties")
             .addConstructorArgReference(dslBeanName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        pockemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pockemon.class);
+        pokemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pokemon.class);
 
-        copyQualifierMetadata(beanFactory, dslBeanName, pockemon);
+        copyQualifierMetadata(beanFactory, dslBeanName, pokemon);
 
-        beanFactory.registerBeanDefinition(pockemonName, pockemon);
+        beanFactory.registerBeanDefinition(pokemonName, pokemon);
     }
 
     private void copyQualifierMetadata(

@@ -6,12 +6,12 @@ import org.springframework.context.event.EventListener;
 import java.util.Collection;
 import java.util.List;
 
-public class PockemonZookeeper {
-    private final PockemonKeeperBook book;
+public class PokemonZookeeper {
+    private final PokemonKeeperBook book;
     
     private final List<String> workersNames;
     
-    public PockemonZookeeper(PockemonKeeperBook book, List<String> workersNames) {
+    public PokemonZookeeper(PokemonKeeperBook book, List<String> workersNames) {
         this.book = book;
         this.workersNames = workersNames;
         

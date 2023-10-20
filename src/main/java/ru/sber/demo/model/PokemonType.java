@@ -1,6 +1,6 @@
 package ru.sber.demo.model;
 
-public enum PockemonType {
+public enum PokemonType {
     PICKACHU,
     BULBAZAVR
 }

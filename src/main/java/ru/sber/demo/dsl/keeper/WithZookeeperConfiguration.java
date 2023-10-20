@@ -8,8 +8,8 @@ import ru.sber.demo.model.api.ZooWorker;
 @Configuration
 public class WithZookeeperConfiguration {
     @Bean
-    public PockemonZookeeperBeanFactoryPostProcessor pockemonZookeeperBeanFactoryPostProcessor() {
-        return new PockemonZookeeperBeanFactoryPostProcessor();
+    public PokemonZookeeperBeanFactoryPostProcessor pockemonZookeeperBeanFactoryPostProcessor() {
+        return new PokemonZookeeperBeanFactoryPostProcessor();
     }
     
     @Bean

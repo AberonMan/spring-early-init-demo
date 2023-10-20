@@ -1,13 +1,13 @@
 package ru.sber.demo.model;
 
-public class Bulbazavr extends AbstractPockemon {
+public class Bulbazavr extends AbstractPokemon {
     
     public Bulbazavr(String bulbazavrImage, boolean shiny) {
         super(bulbazavrImage, shiny);
     }
     
     @Override
-    public PockemonType pockemonType() {
-        return PockemonType.BULBAZAVR;
+    public PokemonType pockemonType() {
+        return PokemonType.BULBAZAVR;
     }
 }

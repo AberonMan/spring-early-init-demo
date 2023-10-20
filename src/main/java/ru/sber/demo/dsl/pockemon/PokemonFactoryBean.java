@@ -1,11 +1,11 @@
 package ru.sber.demo.dsl.pockemon;
 
 import org.springframework.beans.factory.FactoryBean;
-import ru.sber.demo.PockemonConfigurationProperties;
+import ru.sber.demo.PokemonConfigurationProperties;
 import ru.sber.demo.model.Bulbazavr;
 import ru.sber.demo.model.Pickachu;
-import ru.sber.demo.model.api.Pockemon;
-import ru.sber.demo.model.PockemonType;
+import ru.sber.demo.model.api.Pokemon;
+import ru.sber.demo.model.PokemonType;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -16,18 +16,18 @@ import java.util.Random;
 /**
  * Важно, что тут {@link FactoryBean}!!
  */
-public class PockemonFactoryBean implements FactoryBean<Pockemon> {
+public class PokemonFactoryBean implements FactoryBean<Pokemon> {
     
     private static final Random RANDOM = new Random();
-    private final PockemonConfigurationProperties properties;
-    private PockemonType type;
+    private final PokemonConfigurationProperties properties;
+    private PokemonType type;
     
-    public PockemonFactoryBean(PockemonConfigurationProperties configurationProperties, PockemonDsl dsl) {
+    public PokemonFactoryBean(PokemonConfigurationProperties configurationProperties, PokemonDsl dsl) {
         this.properties = configurationProperties;
         this.type = dsl.getType();
     }
     
-    public PockemonFactoryBean(PockemonConfigurationProperties configurationProperties) {
+    public PokemonFactoryBean(PokemonConfigurationProperties configurationProperties) {
         this.properties = configurationProperties;
     }
     
@@ -37,17 +37,17 @@ public class PockemonFactoryBean implements FactoryBean<Pockemon> {
     }
     
     @Override
-    public Pockemon getObject() throws Exception {
+    public Pokemon getObject() throws Exception {
         boolean shiny = isShiny();
         switch(type) {
             case PICKACHU:
                 return new Pickachu(
-                    getPockemonImage(properties.pathToPickachu()),
+                    getPokemonImage(properties.pathToPickachu()),
                     shiny
                 );
             case BULBAZAVR:
                 return new Bulbazavr(
-                    getPockemonImage(properties.pathToBulbazvr()),
+                    getPokemonImage(properties.pathToBulbazvr()),
                     shiny
                 );
             default:
@@ -59,7 +59,7 @@ public class PockemonFactoryBean implements FactoryBean<Pockemon> {
         return RANDOM.nextInt() % 4096 == 1345;
     }
     
-    private String getPockemonImage(String properties) throws IOException, URISyntaxException {
+    private String getPokemonImage(String properties) throws IOException, URISyntaxException {
         return Files.readString(
             Paths.get(
                 Thread.currentThread()
@@ -82,7 +82,7 @@ public class PockemonFactoryBean implements FactoryBean<Pockemon> {
         }
     }
     
-    public PockemonFactoryBean withType(PockemonType type) {
+    public PokemonFactoryBean withType(PokemonType type) {
         this.type = type;
         return this;
     }

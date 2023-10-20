@@ -8,22 +8,22 @@ import org.springframework.core.Ordered;
 
 import java.util.Arrays;
 
-public abstract class AbstractPockemonDslBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
+public abstract class AbstractPokemonDslBeanFactoryPostProcessor implements BeanFactoryPostProcessor, Ordered {
     
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Arrays.stream(
-            beanFactory.getBeanNamesForType(PockemonDsl.class, false, false)
+            beanFactory.getBeanNamesForType(PokemonDsl.class, false, false)
         ).forEach(dslBeanName -> registerBeans((BeanDefinitionRegistry) beanFactory, dslBeanName));
     }
     
     private void registerBeans(BeanDefinitionRegistry beanFactory, String dslBeanName) {
-        String pockemonName = dslBeanName.replace("Dsl", "");
-        registerPockemon(beanFactory, dslBeanName, pockemonName);
-        registerMaster(beanFactory, dslBeanName, "master-for-" + dslBeanName, pockemonName);
+        String pokemonName = dslBeanName.replace("Dsl", "");
+        registerPokemon(beanFactory, dslBeanName, pokemonName);
+        registerMaster(beanFactory, dslBeanName, "master-for-" + dslBeanName, pokemonName);
     }
     
-    protected abstract void registerPockemon(BeanDefinitionRegistry beanFactory, String dslBeanName, String pockemonName);
+    protected abstract void registerPokemon(BeanDefinitionRegistry beanFactory, String dslBeanName, String pokemonName);
     
     protected abstract void registerMaster(BeanDefinitionRegistry beanFactory, String dslBeanName, String masterName,
                                            String pockemonName);

@@ -1,12 +1,12 @@
 package ru.sber.demo.model;
 
-import ru.sber.demo.model.api.Pockemon;
+import ru.sber.demo.model.api.Pokemon;
 
-public abstract class AbstractPockemon implements Pockemon {
+public abstract class AbstractPokemon implements Pokemon {
     private final String pockemonImage;
     private final boolean shiny;
     
-    protected AbstractPockemon(String pockemonImage, boolean shiny) {
+    protected AbstractPokemon(String pockemonImage, boolean shiny) {
         this.pockemonImage = pockemonImage;
         this.shiny = shiny;
     }

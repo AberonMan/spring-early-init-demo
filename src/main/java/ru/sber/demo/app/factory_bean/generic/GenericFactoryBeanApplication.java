@@ -4,13 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import ru.sber.demo.PockemonConfigurationProperties;
+import ru.sber.demo.PokemonConfigurationProperties;
 import ru.sber.demo.dsl.keeper.WithZookeeper;
-import ru.sber.demo.dsl.pockemon.PockemonFactoryBean;
-import ru.sber.demo.model.PockemonType;
+import ru.sber.demo.dsl.pockemon.PokemonFactoryBean;
+import ru.sber.demo.model.PokemonType;
 
 @SpringBootApplication
-@EnableConfigurationProperties(PockemonConfigurationProperties.class)
+@EnableConfigurationProperties(PokemonConfigurationProperties.class)
 @WithZookeeper
 public class GenericFactoryBeanApplication {
 	
@@ -19,12 +19,12 @@ public class GenericFactoryBeanApplication {
 	}
 
 	@Bean
-	public PockemonFactoryBean zhenya(PockemonConfigurationProperties properties) {
-		return new PockemonFactoryBean(properties).withType(PockemonType.BULBAZAVR);
+	public PokemonFactoryBean zhenya(PokemonConfigurationProperties properties) {
+		return new PokemonFactoryBean(properties).withType(PokemonType.BULBAZAVR);
 	}
 
 	@Bean
-	public PockemonFactoryBean maxim(PockemonConfigurationProperties properties) {
-		return new PockemonFactoryBean(properties).withType(PockemonType.PICKACHU);
+	public PokemonFactoryBean maxim(PokemonConfigurationProperties properties) {
+		return new PokemonFactoryBean(properties).withType(PokemonType.PICKACHU);
 	}
 }

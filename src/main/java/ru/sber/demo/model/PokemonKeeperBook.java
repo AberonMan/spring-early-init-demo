@@ -2,10 +2,10 @@ package ru.sber.demo.model;
 
 import java.util.Collection;
 
-public class PockemonKeeperBook {
+public class PokemonKeeperBook {
     private final Collection<String> names;
     
-    public PockemonKeeperBook(Collection<String> names) {
+    public PokemonKeeperBook(Collection<String> names) {
         this.names = names;
     }
     
