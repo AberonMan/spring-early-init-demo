@@ -7,6 +7,7 @@ import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.core.ResolvableType;
 import ru.sber.demo.dsl.pokemon.AbstractPokemonDslBeanFactoryPostProcessor;
 import ru.sber.demo.dsl.pokemon.PokemonFactoryBean;
 import ru.sber.demo.dsl.pokemon.PokemonMasterFactoryBean;
@@ -27,7 +28,7 @@ public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPok
             .addConstructorArgReference(pokemonName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        master.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, PokemonMaster.class);
+        master.setTargetType(ResolvableType.forClass(PokemonMaster.class));
         beanFactory.registerBeanDefinition(masterName, master);
     }
     
@@ -38,7 +39,7 @@ public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPok
             .addConstructorArgReference(dslBeanName)
             .setScope(BeanDefinition.SCOPE_SINGLETON)
             .getBeanDefinition();
-        pokemon.setAttribute(FactoryBean.OBJECT_TYPE_ATTRIBUTE, Pokemon.class);
+        pokemon.setTargetType(ResolvableType.forClass(Pokemon.class));
 
         copyQualifierMetadata(beanFactory, dslBeanName, pokemon);
 
@@ -51,7 +52,6 @@ public class CopyQualifiedPokemonDslBeanFactoryPostProcessor extends AbstractPok
         BeanDefinition dslBeanDefinition = beanFactory.getBeanDefinition(dslBeanName);
 
         // Copy autowire settings from original bean definition.
-        targetBeanDefinition.setAutowireCandidate(dslBeanDefinition.isAutowireCandidate());
         targetBeanDefinition.setPrimary(dslBeanDefinition.isPrimary());
         if (dslBeanDefinition instanceof AbstractBeanDefinition) {
             targetBeanDefinition.copyQualifiersFrom((AbstractBeanDefinition) dslBeanDefinition);
