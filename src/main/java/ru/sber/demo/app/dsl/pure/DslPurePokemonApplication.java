@@ -43,6 +43,12 @@ public class DslPurePokemonApplication {
     }
     
     @Bean
+    public PokemonDsl valentinDsl() {
+        return Pokemon.catchPokemon(PokemonType.PICKACHU)
+            .byMaster("Galina");
+    }
+    
+    @Bean
     public List<PokemonMaster> masters(List<PokemonMaster> masters) {
         return masters;
     }

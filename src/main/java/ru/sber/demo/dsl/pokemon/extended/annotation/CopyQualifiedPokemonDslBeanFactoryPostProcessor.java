@@ -1,6 +1,5 @@
 package ru.sber.demo.dsl.pokemon.extended.annotation;
 
-import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
