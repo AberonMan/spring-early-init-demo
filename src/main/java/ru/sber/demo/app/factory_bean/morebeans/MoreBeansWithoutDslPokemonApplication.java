@@ -17,7 +17,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableConfigurationProperties(PokemonConfigurationProperties.class)
 @WithZookeeper
-public class WithoutDslPokemonApplication {
+public class MoreBeansWithoutDslPokemonApplication {
     public static final String MISHA = "misha";
     public static final String MISHA_MASTER = "Egor";
     public static final String ZHENYA = "zhenya";
@@ -28,7 +28,7 @@ public class WithoutDslPokemonApplication {
     public static final String VALENTIN_MASTER = "Galina";
     
     public static void main(String[] args) {
-        SpringApplication.run(WithoutDslPokemonApplication.class, args);
+        SpringApplication.run(MoreBeansWithoutDslPokemonApplication.class, args);
     }
     
     @Bean(MISHA)
