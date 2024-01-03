@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class TargetTypePokemonDslConfiguration {
     @Bean
-    public TargetTypePokemonDslBeanFactoryPostProcessor pureWrongPokemonDslBeanFactoryPostProcessor() {
+    public TargetTypePokemonDslBeanFactoryPostProcessor targetTypePokemonDslBeanFactoryPostProcessor() {
         return new TargetTypePokemonDslBeanFactoryPostProcessor();
     }
 }
