@@ -7,20 +7,20 @@ import java.util.Collection;
 import java.util.List;
 
 public class PokemonZookeeper {
+
     private final PokemonKeeperBook book;
     
-    private final List<String> workersNames;
+    private final List<String> workerNames;
     
-    public PokemonZookeeper(PokemonKeeperBook book, List<String> workersNames) {
+    public PokemonZookeeper(PokemonKeeperBook book, List<String> workerNames) {
         this.book = book;
-        this.workersNames = workersNames;
-        
+        this.workerNames = workerNames;
     }
     
     @EventListener(ContextRefreshedEvent.class)
     public void welcome() {
         System.out.println("Добро пожаловать в зоопарк покемонов, мой юный друг! Я хранитель зоопарка.");
-        System.out.println("У нас работают: " + workersNames);
+        System.out.println("У нас работают: " + workerNames);
         Collection<String> names = book.getNames();
         if (names.isEmpty()) {
             System.out.println("У нас пока нет покемонов :(");
@@ -30,6 +30,5 @@ public class PokemonZookeeper {
                 name -> System.out.println(" - " + name)
             );
         }
-        
     }
 }

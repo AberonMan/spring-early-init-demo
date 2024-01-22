@@ -14,7 +14,7 @@ public class PokemonMasterFactoryBean implements FactoryBean<PokemonMaster> {
     }
     
     @Override
-    public PokemonMaster getObject() throws Exception {
+    public PokemonMaster getObject() {
         return new PokemonMaster(dsl.getMasterName(), pokemon);
     }
     
