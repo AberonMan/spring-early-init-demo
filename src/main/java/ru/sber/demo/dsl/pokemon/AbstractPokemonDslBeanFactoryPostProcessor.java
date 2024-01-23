@@ -14,10 +14,10 @@ public abstract class AbstractPokemonDslBeanFactoryPostProcessor implements Bean
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         Arrays.stream(
             beanFactory.getBeanNamesForType(PokemonDsl.class, false, false)
-        ).forEach(dslBeanName -> registerBeans((BeanDefinitionRegistry) beanFactory, dslBeanName));
+        ).forEach(dslBeanName -> registerBeanDefinitions((BeanDefinitionRegistry) beanFactory, dslBeanName));
     }
     
-    private void registerBeans(BeanDefinitionRegistry beanFactory, String dslBeanName) {
+    private void registerBeanDefinitions(BeanDefinitionRegistry beanFactory, String dslBeanName) {
         String pokemonName = dslBeanName.replace("Dsl", "");
         registerPokemon(beanFactory, dslBeanName, pokemonName);
         registerMaster(beanFactory, dslBeanName, "master-for-" + dslBeanName, pokemonName);
