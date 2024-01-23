@@ -14,7 +14,9 @@ public class WithZookeeperConfiguration {
     public PokemonZookeeperBeanFactoryPostProcessor pokemonZookeeperBeanFactoryPostProcessor() {
         return new PokemonZookeeperBeanFactoryPostProcessor();
     }
-    
+
+    // this Map is injected by Spring. It will search for all Pokemons,
+    // the String key is each of those names.
     @Bean
     public ZooWorker worker(Map<String, Pokemon> pokemons) {
         return new SimpleZooWorker(pokemons.keySet());

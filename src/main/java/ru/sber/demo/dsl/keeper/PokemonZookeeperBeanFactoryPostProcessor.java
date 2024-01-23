@@ -23,6 +23,11 @@ public class PokemonZookeeperBeanFactoryPostProcessor implements BeanFactoryPost
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         List<String> workerNames = List.of(beanFactory.getBeanNamesForType(ZooWorker.class));
+        /*
+         * even if we use getBeanNamesForType(Pokemon.class),
+         * that implicitly calls getBeanNamesForType(Pokemon.class, true, true); this will _not_ create
+         * the Pokemon or the PokemonFactoryBean beans via that last argument (allowEagerInit) being true.
+         */
         List<String> pokemonNames = List.of(beanFactory.getBeanNamesForType(Pokemon.class));
         
         RootBeanDefinition book = (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonKeeperBook.class)
