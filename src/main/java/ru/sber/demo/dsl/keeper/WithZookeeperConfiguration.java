@@ -3,7 +3,10 @@ package ru.sber.demo.dsl.keeper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.sber.demo.model.SimpleZooWorker;
+import ru.sber.demo.model.api.Pokemon;
 import ru.sber.demo.model.api.ZooWorker;
+
+import java.util.Map;
 
 @Configuration
 public class WithZookeeperConfiguration {
@@ -13,7 +16,7 @@ public class WithZookeeperConfiguration {
     }
     
     @Bean
-    public ZooWorker worker() {
-        return new SimpleZooWorker();
+    public ZooWorker worker(Map<String, Pokemon> pokemons) {
+        return new SimpleZooWorker(pokemons.keySet());
     }
 }

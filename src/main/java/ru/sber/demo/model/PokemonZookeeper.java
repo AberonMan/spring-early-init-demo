@@ -19,7 +19,7 @@ public class PokemonZookeeper {
     
     @EventListener(ContextRefreshedEvent.class)
     public void welcome() {
-        System.out.println("Добро пожаловать в зоопарк покемонов!");
+        System.out.println("Добро пожаловать в зоопарк покемонов, мой юный друг! Я хранитель зоопарка.");
         System.out.println("У нас работают: " + workersNames);
         Collection<String> names = book.getNames();
         if (names.isEmpty()) {
