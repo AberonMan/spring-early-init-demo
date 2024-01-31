@@ -1,16 +1,14 @@
 package ru.sber.demo.model;
 
-import ru.sber.demo.model.api.ZooWorker;
-
 import javax.annotation.PostConstruct;
 
 import java.util.Set;
 
-public class SimpleZooWorker implements ZooWorker {
+public class ZooWorker {
     
     private final Set<String> pokemonNames;
     
-    public SimpleZooWorker(Set<String> pokemonNames) {
+    public ZooWorker(Set<String> pokemonNames) {
         this.pokemonNames = pokemonNames;
     }
     
@@ -19,7 +17,6 @@ public class SimpleZooWorker implements ZooWorker {
         work();
     }
     
-    @Override
     public void work() {
         System.out.println("==================");
         System.out.println("Опять работать((");
