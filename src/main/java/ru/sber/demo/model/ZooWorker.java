@@ -1,6 +1,6 @@
 package ru.sber.demo.model;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import java.util.Set;
 
