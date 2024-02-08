@@ -10,8 +10,8 @@ public class PokemonZookeeper {
     private final Collection<String> pockemonsNames;
     private final Collection<String> workersNames;
     
-    public PokemonZookeeper(Collection<String> pockemonsNames, Collection<String> workersNames) {
-        this.pockemonsNames = pockemonsNames;
+    public PokemonZookeeper(Collection<String> pokemonsNames, Collection<String> workersNames) {
+        this.pockemonsNames = pokemonsNames;
         this.workersNames = workersNames;
     }
     
