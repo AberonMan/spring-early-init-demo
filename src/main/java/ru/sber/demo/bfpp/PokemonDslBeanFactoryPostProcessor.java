@@ -30,6 +30,7 @@ public class PokemonDslBeanFactoryPostProcessor implements BeanFactoryPostProces
                     .setScope(BeanDefinition.SCOPE_SINGLETON)
                     .getBeanDefinition();
             
+            pokemonFactoryBean.setTargetType(ResolvableType.forType(Pokemon.class));
             final BeanDefinition dslBeanDefinition = beanDefinitionRegistry.getBeanDefinition(pokemonBeanName);
             pokemonFactoryBean.setOriginatingBeanDefinition(dslBeanDefinition);
             
@@ -42,6 +43,8 @@ public class PokemonDslBeanFactoryPostProcessor implements BeanFactoryPostProces
                     .addConstructorArgReference(newPokemonDslBeanName)
                     .addConstructorArgReference(pokemonBeanName)
                     .setScope(BeanDefinition.SCOPE_SINGLETON).getBeanDefinition();
+            pokemonMaster.setTargetType(ResolvableType.forType(PokemonMaster.class));
+            
             beanDefinitionRegistry.registerBeanDefinition("masterFor" + pokemonBeanName, pokemonMaster);
             
         }
