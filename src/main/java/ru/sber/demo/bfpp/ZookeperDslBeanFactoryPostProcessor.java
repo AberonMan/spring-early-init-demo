@@ -15,8 +15,9 @@ public class ZookeperDslBeanFactoryPostProcessor implements BeanFactoryPostProce
     
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        final String[] workers = beanFactory.getBeanNamesForType(ZooWorker.class);
-        final String[] pokemons = beanFactory.getBeanNamesForType(Pokemon.class);
+        final String[] workers =
+            beanFactory.getBeanNamesForType(ZooWorker.class, false, false);
+        final String[] pokemons = beanFactory.getBeanNamesForType(Pokemon.class, false, false);
         
         RootBeanDefinition pokemonZookeper =
             (RootBeanDefinition) BeanDefinitionBuilder.rootBeanDefinition(PokemonZookeeper.class)
