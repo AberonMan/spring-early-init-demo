@@ -9,7 +9,7 @@ import java.util.Set;
 public class ZooWorker {
     
     private final Set<String> pokemonNames;
-    
+    private final String name;
     @PostConstruct
     public void init() {
         work();
@@ -21,5 +21,9 @@ public class ZooWorker {
         System.out.println("Покемоны, мои покемоны...");
         System.out.println("Вот они, слева направо: " + String.join(", ", pokemonNames));
         System.out.println("==================");
+    }
+    
+    public String getName() {
+        return name;
     }
 }

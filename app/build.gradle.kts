@@ -22,6 +22,9 @@ lombok {
 }
 
 dependencies {
+	implementation(project(":model"))
+	implementation(project(":external-library"))
+
 	implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
 	implementation("org.springframework.boot:spring-boot-starter")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

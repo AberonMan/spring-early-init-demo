@@ -1,9 +1,12 @@
 package ru.demo.utils;
 
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import ru.demo.PokemonConfigurationProperties;
 import ru.demo.model.Pokemon;
+import ru.demo.model.PokemonDsl;
 import ru.demo.model.PokemonType;
+import org.springframework.beans.factory.config.AbstractFactoryBean;
 
 import java.net.URL;
 import java.nio.file.Files;
@@ -13,13 +16,24 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Thread.currentThread;
 
-public final class PockemonFactory {
+@RequiredArgsConstructor
+public final class PockemonFactoryBean extends AbstractFactoryBean<Pokemon> {
     
-    private PockemonFactory() {
-        throw new IllegalStateException("Can't create pockemon factory!");
+    private final PokemonDsl pokemonDsl;
+    
+    private final PokemonConfigurationProperties configurationProperties;
+    
+    @Override
+    public Class<?> getObjectType() {
+        return Pokemon.class;
     }
     
-    public static Pokemon createPokemon(
+    @Override
+    protected Pokemon createInstance() {
+        return createPokemon(pokemonDsl.getType(), configurationProperties);
+    }
+    
+    public Pokemon createPokemon(
         PokemonType pokemonType,
         PokemonConfigurationProperties pokemonConfigurationProperties) {
         
@@ -35,7 +49,7 @@ public final class PockemonFactory {
     }
     
     @SneakyThrows
-    private static String loadImage(String pokemonImagePath) {
+    private String loadImage(String pokemonImagePath) {
         final URL resource = currentThread().getContextClassLoader().getResource(pokemonImagePath);
         final String image = Files.readString(Paths.get(
             Objects.requireNonNull(resource, "Can't find pokemon imager: %s".formatted(pokemonImagePath)).toURI()));
