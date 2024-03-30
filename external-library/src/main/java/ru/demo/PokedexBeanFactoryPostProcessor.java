@@ -14,8 +14,8 @@ public class PokedexBeanFactoryPostProcessor implements BeanFactoryPostProcessor
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         final BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
-        final String[] workers = beanFactory.getBeanNamesForType(ZooWorker.class);
-        final String[] pokemons = beanFactory.getBeanNamesForType(Pokemon.class);
+        final String[] workers = beanFactory.getBeanNamesForType(ZooWorker.class, false, false);
+        final String[] pokemons = beanFactory.getBeanNamesForType(Pokemon.class, false, false);
         for (String worker : workers) {
             
             final AbstractBeanDefinition pokedexBeanDefinition = BeanDefinitionBuilder
