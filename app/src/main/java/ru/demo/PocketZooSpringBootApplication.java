@@ -4,15 +4,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import ru.demo.bfpp.EnablePokemonDsl;
 import ru.demo.model.Pokemon;
 import ru.demo.model.PokemonDsl;
 import ru.demo.model.PokemonType;
 import ru.demo.model.ZooWorker;
-import ru.demo.bfpp.PokemonDslBeanFactoryPostProcessor;
 
 import java.util.Map;
 
 @SpringBootApplication
+@EnablePokemonDsl(loadWorkers = true)
 @EnableConfigurationProperties(PokemonConfigurationProperties.class)
 public class PocketZooSpringBootApplication {
     
@@ -46,17 +47,7 @@ public class PocketZooSpringBootApplication {
     }
     
     @Bean
-    ZooWorker zooWorker(Map<String, Pokemon> pokemons) {
-        return new ZooWorker(pokemons.keySet(), "Вася");
-    }
-    
-    @Bean
     PokemonWelcomeBoard zookeeper(Map<String, Pokemon> pokemons, Map<String, ZooWorker> workers) {
         return new PokemonWelcomeBoard(pokemons.keySet(), workers.keySet());
-    }
-    
-    @Bean
-    static PokemonDslBeanFactoryPostProcessor pokemonDslBeanFactoryPostProcessor() {
-        return new PokemonDslBeanFactoryPostProcessor();
     }
 }

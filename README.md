@@ -1,3 +1,4 @@
 # Описание
 
-Попытка фикса с использованием `TargetType` у `BeanDefinition`
+Регистрация бинов через ImportBeanDefinitionRegistrar и ImportSelector
+
