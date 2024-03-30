@@ -1,16 +1,16 @@
 package ru.demo.bfpp;
 
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
-import org.springframework.core.Ordered;
-import org.springframework.core.PriorityOrdered;
+import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.core.ResolvableType;
 import ru.demo.PokemonConfigurationProperties;
+import ru.demo.model.Pokemon;
 import ru.demo.model.PokemonDsl;
 import ru.demo.model.PokemonMaster;
 import ru.demo.utils.PockemonFactoryBean;
@@ -25,6 +25,7 @@ public class PokemonDslBeanFactoryPostProcessor implements BeanDefinitionRegistr
                 .addConstructorArgReference(dslName).getBeanDefinition();
             pokemonBeanDefinition.getConstructorArgumentValues()
                 .addGenericArgumentValue(new RuntimeBeanReference(PokemonConfigurationProperties.class));
+            ((RootBeanDefinition) pokemonBeanDefinition).setTargetType(ResolvableType.forType(Pokemon.class));
             
             final String pokemonBeanName = dslName + "#generated";
             registry.registerBeanDefinition(pokemonBeanName, pokemonBeanDefinition);
