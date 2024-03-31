@@ -1,7 +1,6 @@
 plugins {
-	java
-	id("io.franzbecker.gradle-lombok") version "5.0.0"
 	id("org.springframework.boot") version "3.2.2"
+	kotlin("jvm") version "1.9.23"
 }
 
 group = "ru.sber.demo"
@@ -17,16 +16,13 @@ java {
 	}
 }
 
-lombok {
-	version = "1.18.30"
-}
-
 dependencies {
 	implementation(project(":model"))
 	implementation(project(":external-library"))
 
 	implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
 	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

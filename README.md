@@ -1,4 +1,4 @@
 # Описание
 
-Функциональная регистрация бинов через java ApplicationContextInitializer
+Функциональная регистрация бинов через kotlin spring bean DSL.
 
