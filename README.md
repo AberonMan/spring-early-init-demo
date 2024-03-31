@@ -1,4 +1,4 @@
 # Описание
 
-Регистрация бинов через ImportBeanDefinitionRegistrar и ImportSelector
+Функциональная регистрация бинов через java ApplicationContextInitializer
 
